@@ -1,0 +1,126 @@
+/* ===== DMMS - custom styles for the Streamlit app (loaded by app.py) =====
+   Palette: deep teal + emerald, amber accent, soft mint-grey background.
+   Change the colours here once and the whole app updates. */
+:root {
+  --ink: #0b3b3c;        /* deep teal: sidebar, headings */
+  --ink-dark: #072a2b;
+  --teal: #0f766e;       /* buttons and main accent */
+  --teal-dark: #0a5a54;
+  --emerald: #14a38b;    /* gradient end */
+  --teal-soft: #d3efe9;
+  --amber: #f5a623;      /* accent lines */
+  --bg: #f1f6f4;         /* soft mint-grey page */
+  --card: #ffffff;
+  --text: #12302f;
+  --muted: #5f7a78;
+  --line: #d8e5e1;
+}
+
+/* ---------- Page ---------- */
+.stApp { background: var(--bg); color: var(--text); }
+.block-container { max-width: 1150px; padding-top: 2rem; padding-bottom: 3rem; }
+header[data-testid="stHeader"] { background: transparent; }
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+}
+h1 { border-bottom: 3px solid var(--amber); padding-bottom: .3rem; }
+[data-testid="stCaptionContainer"] { color: var(--muted); }
+
+/* ---------- Sidebar ---------- */
+[data-testid="stSidebar"] { background: var(--ink); }
+[data-testid="stSidebar"] * { color: #e3f3ef; }
+[data-testid="stSidebar"] h1 { color: #fff; border-bottom: 0; }
+[data-testid="stSidebar"] label p { color: #c9e6df; font-weight: 600; }
+[data-testid="stSidebar"] input { color: var(--text); }
+[data-testid="stSidebar"] [data-testid="stExpander"] {
+  background: var(--ink-dark);
+  border: 1px solid #ffffff22;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+/* ---------- Metric cards (dashboard + reports) ---------- */
+[data-testid="stMetric"] {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--emerald) 100%);
+  border-bottom: 4px solid var(--amber);
+  padding: .9rem 1.1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(11, 59, 60, .22);
+  transition: transform .2s;
+}
+[data-testid="stMetric"]:hover { transform: translateY(-3px); }
+[data-testid="stMetric"] * { color: #fff !important; }
+[data-testid="stMetricLabel"] p { color: #d4f1ea !important; font-size: .85rem; }
+[data-testid="stMetricValue"] { font-weight: 700; }
+
+/* ---------- Forms and expanders as white cards ---------- */
+[data-testid="stForm"],
+[data-testid="stExpander"] {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(11, 59, 60, .08);
+}
+[data-testid="stForm"] { padding: 1.2rem 1.4rem; }
+
+/* ---------- Inputs ---------- */
+input, textarea, [data-baseweb="select"] > div {
+  border-radius: 8px !important;
+}
+input:focus, textarea:focus {
+  border-color: var(--teal) !important;
+  box-shadow: 0 0 0 3px var(--teal-soft) !important;
+}
+
+/* ---------- Buttons ---------- */
+.stButton > button,
+[data-testid="stFormSubmitButton"] > button {
+  background: var(--teal);
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid var(--teal);
+  border-radius: 8px;
+  padding: .5rem 1.2rem;
+  transition: background-color .2s, transform .15s;
+}
+.stButton > button:hover,
+[data-testid="stFormSubmitButton"] > button:hover {
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.stButton > button:focus-visible,
+[data-testid="stFormSubmitButton"] > button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Tables ---------- */
+[data-testid="stDataFrame"] {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+/* ---------- Tabs (Reports page) ---------- */
+button[data-baseweb="tab"] { font-weight: 600; color: var(--muted); }
+button[data-baseweb="tab"][aria-selected="true"] { color: var(--teal); }
+[data-baseweb="tab-highlight"] { background: var(--amber); }
+
+/* ---------- Alerts ---------- */
+[data-testid="stAlert"] { border-radius: 10px; }
+
+/* ---------- Divider ---------- */
+hr { border-color: var(--line); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .block-container { padding: 1rem .8rem 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-testid="stMetric"], .stButton > button { transition: none; }
+}
